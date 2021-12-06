@@ -25,4 +25,16 @@ RSpec.describe School do
       expect(subject.student_names).to eq([])
     end
   end
+
+  context 'iteration-2' do
+    subject {school = School.new('9:00', 7)}
+
+    it "can add student names to list" do
+      subject.add_student_name('Aurora')
+      subject.add_student_name('tim')
+      subject.add_student_name('megan')
+
+      expect(subject.student_names).to eq(["Aurora", "tim", "megan"])
+    end
+  end
 end
