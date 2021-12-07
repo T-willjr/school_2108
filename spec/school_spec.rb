@@ -1,50 +1,71 @@
-require 'rspec'
 require './lib/school'
+require 'pry'
 
 RSpec.describe School do
-  context 'Iteration 1' do
-    xit 'exists' do
-      school = School.new('9:00', 7)
+  context 'iteration-1' do
+    subject {school = School.new('9:00', 7)}
 
-      expect(school).to be_a(School)
+    it "can create an object" do
+
+      expect(subject).to be_an_instance_of School
     end
 
-    xit 'has a start time' do
-      school = School.new('9:00', 7)
+    it "has a start time" do
 
-      expect(school.start_time).to eq('9:00')
+      expect(subject.start_time).to eq("9:00")
     end
 
-    xit 'has hours in a school day' do
-      school = School.new('9:00', 7)
+    it "shows hours in a school day" do
 
-      expect(school.hours_in_school_day).to eq(7)
+      expect(subject.hours_in_school_day).to eq(7)
     end
 
-    xit 'starts with no student names' do
-      school = School.new('9:00', 7)
+    it "can hold a list of names" do
 
-      expect(school.student_names).to eq([])
+      expect(subject.student_names).to eq([])
     end
   end
 
-  context 'Iteration 2' do
-    xit 'can add student names' do
-      school = School.new('9:00', 7)
+  context 'iteration-2' do
+    subject {school = School.new('9:00', 7)}
 
-      school.add_student_name('Aurora')
-      school.add_student_name('tim')
-      school.add_student_name('megan')
+    it "can add student names to list" do
+      subject.add_student_name('Aurora')
+      subject.add_student_name('tim')
+      subject.add_student_name('megan')
 
-      expect(school.student_names).to eq(['Aurora', 'tim', 'megan'])
+      expect(subject.student_names).to eq(["Aurora", "tim", "megan"])
     end
 
-    xit 'can calculate end time' do
-      school_1 = School.new('9:00', 7)
-      school_2 = School.new('9:00', 3)
-
-      expect(school_1.end_time).to eq('16:00')
-      expect(school_2.end_time).to eq('12:00')
+    it "has an end time" do
+      expect(subject.end_time).to eq("16:00")
     end
+  end
+
+  context 'iteration-3' do
+    subject {school = School.new('9:00', 7)}
+
+    it "is full time" do
+
+      expect(subject.is_full_time?).to be true
+    end
+
+    it "capitalizes students names" do
+      subject.add_student_name('Aurora')
+      subject.add_student_name('tim')
+      subject.add_student_name('megan')
+
+      expect(subject.standard_student_names).to eq(["Aurora", "Tim", "Megan"])
+    end
+  end
+
+  context "iteration-4" do
+    subject {school = School.new('9:00', 7)}
+
+    it "changes school time to 12 hour format" do
+
+      expect(subject.convert_end_time_to_clock_time).to eq("4:00")
+    end
+    
   end
 end

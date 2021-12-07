@@ -16,9 +16,9 @@ class School
   end
 
   def end_time
-    ct = Time.parse(@start_time)
-    ct = ct + @hours_to_secs
-    ct = ct.strftime("%H:%M")
+    @date_time = Time.parse(@start_time)
+    @date_time = @date_time + @hours_to_secs
+    @date_time = @date_time.strftime("%H:%M")
   end
 
   def is_full_time?
@@ -28,5 +28,11 @@ class School
 
   def standard_student_names
     @student_names.map { |student| student.capitalize }
+  end
+
+  def convert_end_time_to_clock_time
+    end_time
+    @clock_time = Time.parse(@date_time)
+    @clock_time.strftime("%l:%M").strip
   end
 end
