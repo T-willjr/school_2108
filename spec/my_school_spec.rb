@@ -49,5 +49,13 @@ RSpec.describe School do
 
       expect(subject.is_full_time?).to be true
     end
+
+    it "capitalizes students names" do
+      subject.add_student_name('Aurora')
+      subject.add_student_name('tim')
+      subject.add_student_name('megan')
+
+      expect(subject.standard_student_names).to eq(["Aurora", "Tim", "Megan"])
+    end
   end
 end
