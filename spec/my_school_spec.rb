@@ -36,5 +36,9 @@ RSpec.describe School do
 
       expect(subject.student_names).to eq(["Aurora", "tim", "megan"])
     end
+
+    it "has an end time" do
+      expect(subject.end_time).to eq("16:00")
+    end
   end
 end
