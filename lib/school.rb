@@ -20,4 +20,9 @@ class School
     ct = ct + @hours_to_secs
     ct = ct.strftime("%H:%M")
   end
+
+  def is_full_time?
+    return true if @hours_in_school_day > 4
+    false
+  end
 end

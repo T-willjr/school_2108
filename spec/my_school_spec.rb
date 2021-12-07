@@ -41,4 +41,13 @@ RSpec.describe School do
       expect(subject.end_time).to eq("16:00")
     end
   end
+
+  context 'iteration-3' do
+    subject {school = School.new('9:00', 7)}
+
+    it "is full time" do
+
+      expect(subject.is_full_time?).to be true
+    end
+  end
 end
